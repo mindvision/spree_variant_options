@@ -13,6 +13,7 @@ SpreeVariantOption.OptionValuesHandler = function(selectors) {
   this.thumbImages = selectors.thumbImages;
   this.variantId = 0;
   this.variantPrice = 0;
+  this.clubPrice = "N/A";
 };
 
 SpreeVariantOption.OptionValuesHandler.prototype.init = function() {
@@ -63,7 +64,7 @@ SpreeVariantOption.OptionValuesHandler.prototype.disableCartInputFields = functi
   this.addToCartButton.prop('disabled', value);
   this.quantityField.prop('disabled', value);
 
-  if(value) { this.priceHeading.html('Select Variant'); }
+  if(value) { this.priceHeading.html('Select Variant to see pricing'); }
 };
 
 SpreeVariantOption.OptionValuesHandler.prototype.updateSiblings = function(optionValue) {
@@ -105,10 +106,11 @@ SpreeVariantOption.OptionValuesHandler.prototype.anyVariantExists = function(con
 SpreeVariantOption.OptionValuesHandler.prototype.setVariantId = function(is_exist) {
   if(is_exist) {
     this.variantField.val(this.variantId);
-    this.priceHeading.html(this.variantPrice);
+    console.log(this);
+    this.priceHeading.html("<b>RRP: </b>" + this.variantPrice + "&emsp;<b>Club Price:</b> " + this.clubPrice);
   } else {
     this.variantField.val('');
-    this.priceHeading.html('Select Variant');
+    this.priceHeading.html('Select Variant to see pricing');
   }
 };
 
@@ -154,6 +156,7 @@ SpreeVariantOption.OptionValuesHandler.prototype.setVariantWithSelecetedValues =
     if(objectContains(this.option_types, conditions)) {
       _this.variantId = this.variant_id;
       _this.variantPrice = this.variant_price;
+      _this.clubPrice = this.club_price;
       return false;
     }
   });
