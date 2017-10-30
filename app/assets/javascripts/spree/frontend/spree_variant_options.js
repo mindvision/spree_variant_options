@@ -64,7 +64,7 @@ SpreeVariantOption.OptionValuesHandler.prototype.disableCartInputFields = functi
   this.addToCartButton.prop('disabled', value);
   this.quantityField.prop('disabled', value);
 
-  if(value) { this.priceHeading.html('Select Variant to see pricing'); }
+  if(value) { this.priceHeading.html('Select size/colour to see pricing'); }
 };
 
 SpreeVariantOption.OptionValuesHandler.prototype.updateSiblings = function(optionValue) {
@@ -110,7 +110,7 @@ SpreeVariantOption.OptionValuesHandler.prototype.setVariantId = function(is_exis
     this.priceHeading.html("<b>RRP: </b>" + this.variantPrice + "&emsp;<b>Club Price:</b> " + this.clubPrice);
   } else {
     this.variantField.val('');
-    this.priceHeading.html('Select Variant to see pricing');
+    this.priceHeading.html('Select size/colour to see pricing');
   }
 };
 
