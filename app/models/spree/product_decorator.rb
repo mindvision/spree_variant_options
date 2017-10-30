@@ -24,7 +24,7 @@ Spree::Product.class_eval do
         in_stock: variant.can_supply?,
         variant_id: variant.id,
         variant_price: variant.price_in(Spree::Config[:currency]).money,
-        club_price: variant.product.member_price,
+        club_price: Spree::Money.new(variant.product.member_price || 0, { currency: currency }),
         option_types: {},
       }
     end
